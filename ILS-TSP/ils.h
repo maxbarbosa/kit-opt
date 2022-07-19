@@ -1,23 +1,24 @@
 #ifndef ILS_H
 #define ILS_H
 #include "readData.h"
-#include "solution.h"
-#include "insertionInfo.h"
+#include "solucao.h"
+#include "infoInsercao.h"
+#include <algorithm>
 
 using namespace std;
 
 class ILS{
     private:
-        Solution solution;
+        Solucao solucao;
         double *matriz;
 
     public:
-        ILS(Solution &, double *);
+        ILS(Solucao &, double *);
         ~ILS() {};
-        void Construction(insertionInfo &);
-        void Disturbance();
-        void LocalSearch(Solution &);
-        bool bestImprovementSwap(Solution &);
+        void Construcao();
+        void Perturbacao();
+        void BuscaLocal(Solucao &);
+        bool bestImprovementSwap(Solucao &);
 
 };
 
