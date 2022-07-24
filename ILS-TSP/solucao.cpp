@@ -24,7 +24,7 @@ void Solucao::exibirSolucao(){
     cout << this->sequencia.back() << "\n\n";
 }
 
-double Solucao::calcularValorObjetivo(){
+double Solucao::calcularValorObj(){
     this->valorObj = 0;
     for(int i = 0; i < this->sequencia.size() - 1; i++){
         valorObj += matrizAdj[this->sequencia[i]][this->sequencia[i+1]];
@@ -44,11 +44,11 @@ vector<int> Solucao::escolher3NosAleatorios(){
     for(int i = 0; i < 3; i++){
         
         int noAleatorio = (rand() % (dimension + 1 - 1)) + 1;
-
-        while((count(subTourInicial.begin(), subTourInicial.end(), noAleatorio) == 1) || noAleatorio == subTourInicial[0]){
+        
+        while((count(subTourInicial.begin(), subTourInicial.end(), noAleatorio) == 1)){
             noAleatorio = (rand() % (dimension + 1 - 1)) + 1;
         }
-
+        
         subTourInicial.push_back(noAleatorio);
     }
 

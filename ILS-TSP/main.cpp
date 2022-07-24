@@ -18,10 +18,10 @@ int main(int argc, char** argv) {
 
     readData(argc, argv, &dimension, &matrizAdj);
     
+    
     Solucao s;
     ILS ils1 = {s, *matrizAdj};
-    cout << endl;
     ils1.Construcao().exibirSolucao();
-
+    
     return 0;
 }

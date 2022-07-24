@@ -17,8 +17,8 @@ class ILS{
         ~ILS() {};
         Solucao Construcao();
         void Perturbacao();
-        void BuscaLocal(Solucao &);
-        bool bestImprovementSwap(Solucao &);
+        void BuscaLocal();
+        bool bestImprovementSwap();
 
 };
 

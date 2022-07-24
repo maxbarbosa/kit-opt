@@ -32,10 +32,35 @@ void ILS::Perturbacao(){
     
 }
 
-void ILS::BuscaLocal(Solucao &){
+void ILS::BuscaLocal(){
     
 }
 
-bool ILS::bestImprovementSwap(Solucao &){
+bool ILS::bestImprovementSwap(){
+    /*
+    this->solucao;
+
+    double bestDelta = 0;
+
+    int best_i = 0, best_j = 0;
+
+    for(int i = 1; i < solucao.getTamSequencia() - 1; i++){
+        for(int j = i + 1; j < solucao.getTamSequencia() - 1; j++){
+            double delta = calculateSwapCost(i, j);
+            if(delta < bestDelta){
+                bestDelta = delta;
+                best_i = i;
+                best_j = j;
+            }
+        }
+    }
+
+    if(bestDelta < 0){
+        swap(solucao.getElementoSequencia(best_i), solucao.getElementoSequencia(best_j));
+        solucao.setValorObj(solucao.calcularValorObj() - delta);
+        return true;
+    }
+    */
+
     return false;
 }

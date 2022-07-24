@@ -14,7 +14,8 @@ class Solucao{
         ~Solucao() {};
         void exibirSolucao();
         void inserirNaSolucao(int no, int pos) {this->sequencia.insert(this->sequencia.begin() + pos, no);};
-        double calcularValorObjetivo();
+        void setValorObj(double _valorObj) {this->valorObj = _valorObj;};
+        double calcularValorObj();
         int getTamSequencia() {return this->sequencia.size();};
         int getElementoSequencia(int pos) {return this->sequencia[pos];};
         vector<int> setSequencia(vector<int> novaSequencia) {return this->sequencia = novaSequencia;};
