@@ -6,7 +6,7 @@ using namespace std;
 ILS::ILS(Solucao &s, double *m) : solucao{s}, matriz{m} {};
 
 Solucao ILS::Construcao(){
-    this->solucao = {{0}, 0};
+    this->solucao;
     this->solucao.setSequencia(this->solucao.escolher3NosAleatorios());
 
     vector<int> CL = this->solucao.nosRestantes();
@@ -22,21 +22,10 @@ Solucao ILS::Construcao(){
 
         this->solucao.inserirNaSolucao(infoCusto[selecionado].getNoInserido(), infoCusto[selecionado].getArestaRemovida() + 1);
 
-        int k = 0;
-
-        for(int i = 0; i < CL.size(); i++){
-            if(CL[i] == infoCusto[selecionado].getNoInserido()){
-                k = i;
-                break;
-            }
-        }
-
-        CL.erase(CL.begin() + k);
-        
+        CL.erase(remove(CL.begin(), CL.end(), infoCusto[selecionado].getNoInserido()), CL.end());       
     }
 
-    return this->solucao;
-        
+    return this->solucao;       
 }
 
 void ILS::Perturbacao(){
