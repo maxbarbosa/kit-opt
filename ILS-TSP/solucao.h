@@ -13,11 +13,11 @@ class Solucao{
         Solucao(vector<int>, double);
         ~Solucao() {};
         void exibirSolucao();
-        void inserirNaSolucao(Solucao &s, int no) {sequencia.push_back(no);};
+        void inserirNaSolucao(int no, int pos) {this->sequencia.insert(this->sequencia.begin() + pos, no);};
         double calcularValorObjetivo();
-        int getTamSequencia() {return sequencia.size();};
-        int getElementoSequencia(int pos) {return sequencia[pos];};
-        vector<int> setSequencia(vector<int> novaSequencia) {return sequencia = novaSequencia;};
+        int getTamSequencia() {return this->sequencia.size();};
+        int getElementoSequencia(int pos) {return this->sequencia[pos];};
+        vector<int> setSequencia(vector<int> novaSequencia) {return this->sequencia = novaSequencia;};
         vector<int> escolher3NosAleatorios();
         vector<int> nosRestantes();
 };

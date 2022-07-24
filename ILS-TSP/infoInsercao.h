@@ -1,6 +1,7 @@
 #ifndef INFOINSERCAO_H
 #define INFOINSERCAO_H
 #include "solucao.h"
+#include <iostream>
 #include <vector>
 using namespace std;
 
@@ -13,12 +14,18 @@ class infoInsercao{
     public:
         infoInsercao(int, int, double);
         ~infoInsercao() {};
-        vector<infoInsercao> calcularCustoInsercao(infoInsercao &,Solucao &, vector<int> &);
-        double getCusto() {return custo;};
-        static bool ordernarInfoInsercao(infoInsercao &, infoInsercao &);
-        void setNoInserido(int no_) {noInserido =  no_;};
-        void setArestaRemovida(int aresta_) {arestaRemovida = aresta_;};
-        void setCusto(double custo_) {custo = custo_;};
+        vector<infoInsercao> calcularCustoInsercao(infoInsercao &, Solucao &, vector<int> &);
+        double getCusto() {return this->custo;};
+        static bool ordernarPorCusto(infoInsercao &, infoInsercao &);
+        void imprimeInformacao() {cout << "(" << this->noInserido << ", " << this->arestaRemovida << ", " << this->custo << ")\n";};
+        
+        int getNoInserido() {return this->noInserido;};
+        int getArestaRemovida() {return this->arestaRemovida;};
+        double getCustoInfoInsercao() {return this->custo;};
+        
+        void setNoInserido(int no_) {this->noInserido =  no_;};
+        void setArestaRemovida(int aresta_) {this->arestaRemovida = aresta_;};
+        void setCusto(double custo_) {this->custo = custo_;};
 };
 
 #endif

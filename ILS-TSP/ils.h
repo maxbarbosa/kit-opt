@@ -15,7 +15,7 @@ class ILS{
     public:
         ILS(Solucao &, double *);
         ~ILS() {};
-        void Construcao();
+        Solucao Construcao();
         void Perturbacao();
         void BuscaLocal(Solucao &);
         bool bestImprovementSwap(Solucao &);

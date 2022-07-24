@@ -18,21 +18,20 @@ int main(int argc, char** argv) {
 
     readData(argc, argv, &dimension, &matrizAdj);
 
-    Solucao s1;
+    Solucao s1 = {{0}, 0};
+    s1.setSequencia(s1.escolher3NosAleatorios());
     s1.exibirSolucao();
-    cout << s1.calcularValorObjetivo() << "\n";
-    cout << s1.getElementoSequencia(2) << endl;
-    cout << s1.getTamSequencia() << "\n";
 
-    Solucao s2 = {{5, 4, 3}, 10};
-    s2.exibirSolucao();
-    //geração de 3 nós aleatórios do início da construção deu cerTO
-    s2.setSequencia(s2.escolher3NosAleatorios());
-    s2.exibirSolucao();
-    vector<int> teste;
-    teste = s2.nosRestantes();
-
-    for(auto k : teste){
-        cout << k << " -> ";
+    vector<int> CL = s1.nosRestantes();
+    for(auto cl : CL){
+        cout << cl << " -> ";
     }
+
+    cout << "\n";
+    Solucao s = {{0}, 0};
+    ILS ils1 = {s, *matrizAdj};
+    cout << endl;
+    ils1.Construcao().exibirSolucao();
+
+    return 0;
 }

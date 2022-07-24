@@ -15,13 +15,13 @@ Solucao::Solucao(){
     }
     nodes.push_back(1);
 
-    sequencia = nodes;
-    valorObj = 0;
+    this->sequencia = nodes;
+    this->valorObj = 0;
 }
 
 Solucao::Solucao(vector<int> seq, double value){
-    sequencia = seq;
-    valorObj = value;
+    this->sequencia = seq;
+    this->valorObj = value;
 }
 
 void Solucao::exibirSolucao(){
@@ -42,33 +42,35 @@ double Solucao::calcularValorObjetivo(){
 
 vector<int> Solucao::escolher3NosAleatorios(){
 
-    vector<int> randSubSequence;
-    randSubSequence.push_back(1);
+    vector<int> subTourInicial;
+    // ... -1)) + 1 garante que o número aleatório escolhido estará no intervalo [1, qtd de cidades da instância]
+    int noInicial = (rand() % (dimension + 1 - 1)) + 1;
+    
+    subTourInicial.push_back(noInicial);
 
-    int v = 0;
     for(int i = 0; i < 3; i++){
         
-        v = rand() % dimension;
+        int noAleatorio = (rand() % (dimension + 1 - 1)) + 1;
 
-        while((count(randSubSequence.begin(), randSubSequence.end(), v) == 1) || v == 0){
-            v = rand() % dimension;
-        } 
-        randSubSequence.push_back(v);
+        while((count(subTourInicial.begin(), subTourInicial.end(), noAleatorio) == 1) || noAleatorio == subTourInicial[0]){
+            noAleatorio = (rand() % (dimension + 1 - 1)) + 1;
+        }
 
+        subTourInicial.push_back(noAleatorio);
     }
+    
+    subTourInicial.push_back(subTourInicial[0]);
 
-    randSubSequence.push_back(1);
-
-    return randSubSequence;
+    return subTourInicial;
 }
 
 vector<int> Solucao::nosRestantes(){
-    vector<int> rNodes;
+    vector<int> nosSobrando;
     for(int i = 1; i <= dimension; i++){
-        if(count(sequencia.begin(), sequencia.end(), i) == 0){
-            rNodes.push_back(i);
+        if(count(this->sequencia.begin(), this->sequencia.end(), i) == 0){
+            nosSobrando.push_back(i);
         }
     }
 
-    return rNodes;
+    return nosSobrando;
 }

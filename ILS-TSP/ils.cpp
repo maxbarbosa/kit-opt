@@ -1,42 +1,43 @@
 #include "ils.h"
 #include <cmath>
+#include <iostream>
+using namespace std;
 
 ILS::ILS(Solucao &s, double *m) : solucao{s}, matriz{m} {};
 
-//void ILS::Construcao(vector<infoInsercao> &infoCusto)
-void ILS::Construcao(){
-    Solucao s1 = {{0}, 0};
-    s1.setSequencia(s1.escolher3NosAleatorios());
+Solucao ILS::Construcao(){
+    this->solucao = {{0}, 0};
+    this->solucao.setSequencia(this->solucao.escolher3NosAleatorios());
 
-    vector<int> CL = s1.nosRestantes();
+    vector<int> CL = this->solucao.nosRestantes();
 
     while(!CL.empty()){
         infoInsercao ins1 = {0, 0, 0};
         vector<infoInsercao> infoCusto;
         
-        infoCusto = ins1.calcularCustoInsercao(ins1, s1, CL);
-        sort(infoCusto.begin(), infoCusto.end(), infoInsercao::ordernarInfoInsercao);
+        infoCusto = ins1.calcularCustoInsercao(ins1, this->solucao, CL);
+        sort(infoCusto.begin(), infoCusto.end(), infoInsercao::ordernarPorCusto);
     
         double alpha = (double) rand() / RAND_MAX;
         int selecionado = rand() % ((int) ceil(alpha * infoCusto.size()));
-        
-        //Sendo (k, {i, j}) o par escolhido, retirar a aresta {i, j} de s' e inserir o vértice k entre i e j; 
 
-        s1.inserirNaSolucao(s1, selecionado);
+        this->solucao.inserirNaSolucao(infoCusto[selecionado].getNoInserido(), infoCusto[selecionado].getArestaRemovida() + 1);
 
-        int arestaARemover;
+        int k = 0;
 
         for(int i = 0; i < CL.size(); i++){
-            if(CL[i] == selecionado){
-                arestaARemover = i;
+            if(CL[i] == infoCusto[selecionado].getNoInserido()){
+                k = i;
                 break;
             }
         }
 
-        CL.erase(CL.begin() + arestaARemover);
+        CL.erase(CL.begin() + k);
         
     }
 
+    return this->solucao;
+        
 }
 
 void ILS::Perturbacao(){

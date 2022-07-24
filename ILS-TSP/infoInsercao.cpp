@@ -23,15 +23,14 @@ vector<infoInsercao> infoInsercao::calcularCustoInsercao(infoInsercao &ins1, Sol
             ins1.setCusto(matrizAdj[i][k] + matrizAdj[j][k] - matrizAdj[i][j]);
 
             custoInsercao.push_back(ins1);
-
-            l++;
         }
+        l++;
     }
 
     return custoInsercao;
 }
 
-bool infoInsercao::ordernarInfoInsercao(infoInsercao &i, infoInsercao &j){
+bool infoInsercao::ordernarPorCusto(infoInsercao &i, infoInsercao &j){
     if(i.getCusto() < j.getCusto()){
         return true;
     }
