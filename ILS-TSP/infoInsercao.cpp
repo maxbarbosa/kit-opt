@@ -5,11 +5,18 @@ using namespace std;
 
 extern double **matrizAdj;
 
+infoInsercao::infoInsercao(){
+    this->noInserido = 0;
+    this->arestaRemovida = 0;
+    this->custo = 0;
+}
+
 infoInsercao::infoInsercao(int no, int arestaRm, double c):
     noInserido{no}, arestaRemovida{arestaRm}, custo{c}
 {};
 
-vector<infoInsercao> infoInsercao::calcularCustoInsercao(infoInsercao &ins1, Solucao &s, vector<int> &CL){
+vector<infoInsercao> infoInsercao::calcularCustoInsercao(Solucao &s, vector<int> &CL){
+    infoInsercao insInfo;
     vector<infoInsercao> custoInsercao;
 
     int l = 0;
@@ -18,11 +25,11 @@ vector<infoInsercao> infoInsercao::calcularCustoInsercao(infoInsercao &ins1, Sol
         int j = s.getElementoSequencia(b);
         
         for(auto k : CL){
-            ins1.setNoInserido(k);
-            ins1.setArestaRemovida(a);
-            ins1.setCusto(matrizAdj[i][k] + matrizAdj[j][k] - matrizAdj[i][j]);
+            insInfo.setNoInserido(k);
+            insInfo.setArestaRemovida(a);
+            insInfo.setCusto(matrizAdj[i][k] + matrizAdj[j][k] - matrizAdj[i][j]);
 
-            custoInsercao.push_back(ins1);
+            custoInsercao.push_back(insInfo);
         }
         l++;
     }

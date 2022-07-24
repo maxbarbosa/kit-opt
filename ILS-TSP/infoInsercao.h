@@ -12,9 +12,10 @@ class infoInsercao{
         double custo;
 
     public:
+        infoInsercao();
         infoInsercao(int, int, double);
         ~infoInsercao() {};
-        vector<infoInsercao> calcularCustoInsercao(infoInsercao &, Solucao &, vector<int> &);
+        static vector<infoInsercao> calcularCustoInsercao(Solucao &, vector<int> &);
         double getCusto() {return this->custo;};
         static bool ordernarPorCusto(infoInsercao &, infoInsercao &);
         void imprimeInformacao() {cout << "(" << this->noInserido << ", " << this->arestaRemovida << ", " << this->custo << ")\n";};

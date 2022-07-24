@@ -8,14 +8,7 @@ extern double **matrizAdj;
 extern int dimension;
 
 Solucao::Solucao(){
-    
-    vector<int> nodes;
-    for(int i = 1; i <= dimension; i++){
-        nodes.push_back(i);
-    }
-    nodes.push_back(1);
-
-    this->sequencia = nodes;
+    this->sequencia = {0};
     this->valorObj = 0;
 }
 
@@ -58,7 +51,7 @@ vector<int> Solucao::escolher3NosAleatorios(){
 
         subTourInicial.push_back(noAleatorio);
     }
-    
+
     subTourInicial.push_back(subTourInicial[0]);
 
     return subTourInicial;

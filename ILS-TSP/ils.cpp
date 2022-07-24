@@ -12,10 +12,9 @@ Solucao ILS::Construcao(){
     vector<int> CL = this->solucao.nosRestantes();
 
     while(!CL.empty()){
-        infoInsercao ins1 = {0, 0, 0};
         vector<infoInsercao> infoCusto;
         
-        infoCusto = ins1.calcularCustoInsercao(ins1, this->solucao, CL);
+        infoCusto = infoInsercao::calcularCustoInsercao(this->solucao, CL);
         sort(infoCusto.begin(), infoCusto.end(), infoInsercao::ordernarPorCusto);
     
         double alpha = (double) rand() / RAND_MAX;
