@@ -36,17 +36,17 @@ double Solucao::calcularValorObj(){
 vector<int> Solucao::escolher3NosAleatorios(){
 
     vector<int> subTourInicial;
-    // ... -1)) + 1 garante que o número aleatório escolhido estará no intervalo [1, qtd de cidades da instância]
-    int noInicial = (rand() % (dimension + 1 - 1)) + 1;
+    // ... +1 garante o intervalo [1, nº de cidades], sem isso o intervalo seria [0, nº de cidades -1]
+    int noInicial = rand() % dimension + 1;
     
     subTourInicial.push_back(noInicial);
 
     for(int i = 0; i < 3; i++){
         
-        int noAleatorio = (rand() % (dimension + 1 - 1)) + 1;
+        int noAleatorio = rand() % dimension + 1;
         
         while((count(subTourInicial.begin(), subTourInicial.end(), noAleatorio) == 1)){
-            noAleatorio = (rand() % (dimension + 1 - 1)) + 1;
+            noAleatorio = rand() % dimension + 1;
         }
         
         subTourInicial.push_back(noAleatorio);
